@@ -13,12 +13,24 @@ public class DogBuilder implements WithBreed, WithColour {
         return new DogBuilder();
     }
 
-    public WithBreed called(String name) {
+    public static DogBuilder aLargeDog() {
+        return aDog().ofBreed("Labrador");
+    }
+
+    public static DogBuilder aSmallDog() {
+        return aDog().ofBreed("Poodle");
+    }
+
+    public static DogBuilder aGuardDog() {
+        return aDog().ofBreed("Doberman");
+    }
+
+    public DogBuilder called(String name) {
         this.name = name;
         return this;
     }
 
-    public WithColour ofBreed(String breed) {
+    public DogBuilder ofBreed(String breed) {
         this.breed = breed;
         return this;
     }
