@@ -19,6 +19,11 @@ public class Dog {
         this.favouriteToy = favouriteToy;
     }
 
+    @Override
+    public String toString() {
+        return name + " the " + (colour + " " + breed).toLowerCase() + " was born in " + dateOfBirth;
+    }
+
     public String getName() {
         return name;
     }

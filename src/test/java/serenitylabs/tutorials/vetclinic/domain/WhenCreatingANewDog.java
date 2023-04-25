@@ -4,11 +4,12 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
 
 public class WhenCreatingANewDog {
 
-    private final static LocalDateTime birthday = LocalDateTime.now();
+    private final static LocalDateTime birthday = LocalDateTime.of(2023,4,25,12,10);
     @Test
     public void a_large_dog_should_have_a_name_a_breed_a_colour_and_a_date_of_birth() {
         Dog fido = DogBuilder.aLargeDog()
@@ -67,6 +68,20 @@ public class WhenCreatingANewDog {
         assertThat(bruno.getFavouriteToy()).isEqualTo("Bone");
         assertThat(bruno.getFavouriteFood()).isEqualTo("Croquettes");
         assertThat(bruno.getDateOfBirth()).isEqualTo(birthday);
+    }
+
+    @Test
+    public void a_dog_should_be_printed_in_a_readable_form(){
+        Dog fido = DogBuilder.aDog()
+                .called("Fido")
+                .ofBreed("Labrador")
+                .ofColour("Black")
+                .bornOn(birthday);
+
+        assertThat(fido.toString()).isEqualTo("Fido the black labrador was born in 2023-04-25T12:10");
+        assertThat(fido.toString()).startsWith("Fido");
+        assertThat(fido.toString()).endsWith("12:10");
+        assertThat(fido.toString()).contains("black");
     }
 
 }
