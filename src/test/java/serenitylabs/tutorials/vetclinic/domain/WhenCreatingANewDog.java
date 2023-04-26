@@ -84,4 +84,26 @@ public class WhenCreatingANewDog {
         assertThat(fido.toString()).contains("black");
     }
 
+    @Test
+    public void a_dog_complains_by_growling(){
+        Dog fido = DogBuilder.aDog()
+                .called("Fido")
+                .ofBreed("Labrador")
+                .ofColour("Black")
+                .bornOn(birthday);
+
+        assertThat(fido.complaint()).isEqualTo("Grrrr");
+    }
+
+    @Test
+    public void a_cat_complains_by_meowing(){
+        Cat felix = CatBuilder.aCat()
+                .called("Felix")
+                .ofBreed("Burmese")
+                .ofColour("Brown")
+                .bornOn(birthday);
+
+        assertThat(felix.complaint()).isEqualTo("Meow");
+    }
+
 }

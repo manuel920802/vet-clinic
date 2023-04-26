@@ -1,14 +1,16 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Dog {
+public class Dog extends Animal implements NeedsVaccinations {
     private final String name;
     private final String breed;
     private final LocalDateTime dateOfBirth;
     private final String favouriteFood;
     private final String colour;
     private final String favouriteToy;
+    private LocalDate lastVaccinationDate;
 
     Dog(String name, String breed, LocalDateTime dateOfBirth, String favouriteFood, String colour, String favouriteToy) {
         this.name = name;
@@ -48,4 +50,18 @@ public class Dog {
         return favouriteToy;
     }
 
+    @Override
+    public String complaint() {
+        return "Grrrr";
+    }
+
+    @Override
+    public void wasVaccinatedOn(LocalDate lastVaccinationDate) {
+        this.lastVaccinationDate = lastVaccinationDate;
+    }
+
+    @Override
+    public LocalDate nextVaccinationDue() {
+        return lastVaccinationDate.plusMonths(6);
+    }
 }
