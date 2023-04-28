@@ -4,7 +4,6 @@ public class VetAssistant {
     private final ComplaintRegister complaintRegister;
 
     public VetAssistant(ComplaintRegister complaintRegister) {
-
         this.complaintRegister = complaintRegister;
     }
 
